@@ -11,11 +11,11 @@ yarn dev
 ```
 
 
-## Host Static Website
+## Deploy to GitHub Pages
 
 ```sh
 # generate static project to docs/ directory
-yarn generate
+PREFIX=/nuxt2-static yarn generate
 # serve the docs/ directory
 yarn start --spa --target static
 ```
