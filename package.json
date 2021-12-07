@@ -1,0 +1,16 @@
+{
+  "name": "nuxt2-static",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nuxt",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "marked": "^4.0.6",
+    "nuxt": "^2.15.8",
+    "raw-loader": "^4.0.2",
+    "yaml-loader": "^0.6.0"
+  }
+}
