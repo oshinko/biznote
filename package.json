@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nuxt",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "node generate-pages.mjs && nuxt generate",
+    "aaaa": "node build.mjs && nuxt generate"
   },
   "dependencies": {
     "marked": "^4.0.6",

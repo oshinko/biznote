@@ -1,8 +1,10 @@
+import fs from 'fs'
 
+fs.writeFileSync('./pages/index.vue', `
 <template>
   <div>
     {{ $route.path }}
-    Generated at 2021-12-07T11:41:39.604Z
+    Generated at ${(new Date()).toISOString()}
     <ul>
       <li><NuxtLink to="page1">page1</NuxtLink></li>
       <li><NuxtLink to="page2">page2</NuxtLink></li>
@@ -15,3 +17,4 @@
 export default {
 }
 </script>
+`)

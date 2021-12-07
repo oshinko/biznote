@@ -3,9 +3,9 @@
 </template>
 
 <script>
-import content from '@/assets/page2/content.md'
-import image from '@/assets/page2/1200x630.png'
-import meta from '@/assets/page2/meta.yml'
+import content from '@/assets/pages/page2/content.md'
+import image from '@/assets/pages/page2/1200x630.png'
+import meta from '@/assets/pages/page2/meta.yml'
 
 export default {
   async asyncData({ $config, $marked, route }) {
