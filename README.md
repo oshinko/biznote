@@ -11,7 +11,7 @@ yarn dev
 ```
 
 
-## Static Hosting
+## Host Static Website
 
 ```sh
 # generate static project to docs/ directory
