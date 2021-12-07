@@ -8,16 +8,15 @@ import image from '@/assets/page2/page3/1200x630.png'
 import meta from '@/assets/page2/page3/meta.yml'
 
 export default {
-  async asyncData({ $marked, route, req }) {
+  async asyncData({ $config, $marked, route }) {
     const html = $marked.parse(content)
-    const host = process.server ? req.headers.host : ''
 
     return {
       title: meta.title ?? (html.match(/<h1[^>]+>([^<]+)<\/h1>/) ?? [])[1],
       content: html,
       og: {
-        url: `https://${host}${route.path}`,
-        image: `https://${host}${image}`
+        url: `${$config.baseURL}${route.path}`,
+        image: `${$config.baseURL}${image}`
       }
     }
   },

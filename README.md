@@ -14,8 +14,8 @@ yarn dev
 ## Static Hosting
 
 ```sh
-# generate static project to dist/ directory
+# generate static project to docs/ directory
 yarn generate
-# serve the dist/ directory
+# serve the docs/ directory
 yarn start --spa --target static
 ```

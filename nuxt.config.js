@@ -16,7 +16,16 @@ export default {
       })
     }
   },
+
+  generate: {
+    dir: 'docs'
+  },
+
   plugins: [
     '~/plugins/marked'
-  ]
+  ],
+
+  publicRuntimeConfig: {
+    baseURL: 'http://localhost:3000'
+  }
 }
