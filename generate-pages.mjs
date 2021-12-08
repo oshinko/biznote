@@ -43,6 +43,7 @@ const tmplPlaceholders = {
     default: '@/assets/pages/meta.yml'
   }
 }
+const relAnchor = /<a +.*href="([^"]*)"[^>]*>([^<]+)<\/a>/g
 
 async function getPageBundles() {
   const results = {}
@@ -76,16 +77,27 @@ for (const [bundleDir, files] of Object.entries(await getPageBundles())) {
     const stem = path.basename(file, ext)
     const pageAssetFile = path.join(pageAssetsDir, bundleDir, file)
     const relPageAssetFile = path.relative(here, pageAssetFile)
-    const importablePath = '@/' + relPageAssetFile.replace(/\\/g, '/')
+    const importablePath = '@/' + relPageAssetFile.split(path.sep).join('/')
 
     if (stem === 'content' && ext === '.md') {
       const markdown =
         await fs.promises.readFile(pageAssetFile, { encoding: 'utf8' })
-      const html = marked.parse(markdown)
+      let html = marked.parse(markdown)
         .replace(
           /<a +.*href="(\/[^"]*)"[^>]*>([^<]+)<\/a>/g,
           '<NuxtLink to="$1">$2</NuxtLink>'
         )
+
+      for (const [matched, href, text] of html.matchAll(relAnchor)) {
+        if (href.match(/[^:]+:/))
+          continue
+        if (path.isAbsolute(href))
+          continue
+        const to = '/' + path.relative(pagesDir, path.join(pageDir, href))
+          .split(path.sep).join('/')
+        html = html.replace(matched, `<NuxtLink to="${to}">${text}</NuxtLink>`)
+      }
+
       page = page.replace(tmplPlaceholders.content.pattern, html)
     }
 
