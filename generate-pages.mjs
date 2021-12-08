@@ -2,6 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import url from 'url'
 
+import { marked } from 'marked'
+
 async function *walk(dir) {
   const paths = await fs.promises.readdir(dir)
 
@@ -61,7 +63,7 @@ async function getPageBundles() {
   return results
 }
 
-import { marked } from 'marked'
+fs.promises.rm(pagesDir, { recursive: true, force: true })
 
 for (const [bundleDir, files] of Object.entries(await getPageBundles())) {
   const pageDir = path.join(pagesDir, bundleDir)
