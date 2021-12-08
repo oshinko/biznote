@@ -1,8 +1,3 @@
-# page4
+# 日本語
 
-router-link testing.
-
-- [../](../)
-- [/](/)
-- [/page1](/page1)
-- [../page1](../page1)
+日本語もイケるクチ。
