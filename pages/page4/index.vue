@@ -1,10 +1,18 @@
 <template>
-  <div>/* content */</div>
+  <div><h1 id="page4">page4</h1>
+<p>router-link testing.</p>
+<ul>
+<li><a href="../">../</a></li>
+<li><NuxtLink to="/">/</NuxtLink></li>
+<li><NuxtLink to="/page1">/page1</NuxtLink></li>
+<li><a href="../page1">../page1</a></li>
+</ul>
+</div>
 </template>
 
 <script>
-import image1200x630 from '/* image1200x630 */'
-import meta from '/* meta */'
+import image1200x630 from '@/assets/pages/1200x630.png'
+import meta from '@/assets/pages/meta.yml'
 
 export default {
   async asyncData({ $config, route }) {

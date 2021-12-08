@@ -28,6 +28,19 @@ const tmplDir = path.join(here, 'templates')
 const tmplPageFile = path.join(tmplDir, 'Page.vue')
 const tmplPageFileContent =
   await fs.promises.readFile(tmplPageFile, { encoding: 'utf8' })
+const tmplPlaceholders = {
+  content: {
+    pattern: /\/\*+ +content +\*+\//
+  },
+  image1200x630: {
+    pattern: /\/\*+ +image1200x630 +\*+\//,
+    default: '@/assets/pages/1200x630.png'
+  },
+  meta: {
+    pattern: /\/\*+ +meta +\*+\//,
+    default: '@/assets/pages/meta.yml'
+  }
+}
 
 async function getPageBundles() {
   const results = {}
@@ -48,28 +61,44 @@ async function getPageBundles() {
   return results
 }
 
+import { marked } from 'marked'
+
 for (const [bundleDir, files] of Object.entries(await getPageBundles())) {
   const pageDir = path.join(pagesDir, bundleDir)
   await fs.promises.mkdir(pageDir, { recursive: true })
 
-  const page = files.reduce((acc, file) => {
+  let page = tmplPageFileContent
+
+  for (const file of files) {
     const ext = path.extname(file)
     const stem = path.basename(file, ext)
     const pageAssetFile = path.join(pageAssetsDir, bundleDir, file)
     const relPageAssetFile = path.relative(here, pageAssetFile)
     const importablePath = '@/' + relPageAssetFile.replace(/\\/g, '/')
 
-    if (stem === 'content' && ext === '.md')
-      acc = acc.replace(/\/\*+ +content +\*+\//, importablePath)
-
-    else if (stem === 'meta' && ext.match(/\.ya?ml/))
-      acc = acc.replace(/\/\*+ +meta +\*+\//, importablePath)
+    if (stem === 'content' && ext === '.md') {
+      const markdown =
+        await fs.promises.readFile(pageAssetFile, { encoding: 'utf8' })
+      const html = marked.parse(markdown)
+        .replace(
+          /<a +.*href="(\/[^"]*)"[^>]*>([^<]+)<\/a>/g,
+          '<NuxtLink to="$1">$2</NuxtLink>'
+        )
+      page = page.replace(tmplPlaceholders.content.pattern, html)
+    }
 
     else if (stem === '1200x630' && ext.match(/\.pi?ng/))
-      acc = acc.replace(/\/\*+ +image1200x630 +\*+\//, importablePath)
+      page =
+        page.replace(tmplPlaceholders.image1200x630.pattern, importablePath)
 
-    return acc
-  }, tmplPageFileContent)
+    else if (stem === 'meta' && ext.match(/\.ya?ml/))
+      page = page.replace(tmplPlaceholders.meta.pattern, importablePath)
+  }
 
-  await fs.promises.writeFile(path.join(pageDir, 'index.vue'), page)
+  const pageFilled = Object.entries(tmplPlaceholders).reduce(
+    (acc, [_, { pattern, default: value }]) =>
+      [null, undefined].includes(value) ? acc : acc.replace(pattern, value),
+    page)
+
+  await fs.promises.writeFile(path.join(pageDir, 'index.vue'), pageFilled)
 }
