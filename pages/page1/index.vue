@@ -4,7 +4,7 @@
 
 <script>
 import content from '@/assets/pages/page1/content.md'
-import image from '@/assets/pages/page1/1200x630.png'
+import image1200x630 from '@/assets/pages/page1/1200x630.png'
 import meta from '@/assets/pages/page1/meta.yml'
 
 export default {
@@ -16,7 +16,7 @@ export default {
       content: html,
       og: {
         url: `${$config.baseURL}${route.path}`,
-        image: `${$config.baseURL}${image}`
+        image: `${$config.baseURL}${image1200x630}`
       }
     }
   },
