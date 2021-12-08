@@ -1,12 +1,11 @@
 <template>
-  <div><h1 id="welcome">Welcome!</h1>
-<p>Hello!</p>
+  <div><h1 id="page4">page4</h1>
+<p>router-link testing.</p>
 <ul>
+<li><a href="../">../</a></li>
+<li><NuxtLink to="/">/</NuxtLink></li>
 <li><NuxtLink to="/page1">/page1</NuxtLink></li>
-<li><NuxtLink to="/page2">/page2</NuxtLink></li>
-<li><NuxtLink to="/page2/page3">/page3</NuxtLink></li>
-<li><NuxtLink to="/page4">/page4</NuxtLink></li>
-<li><NuxtLink to="/%E6%97%A5%E6%9C%AC%E8%AA%9E">/日本語</NuxtLink></li>
+<li><a href="../page1">../page1</a></li>
 </ul>
 </div>
 </template>
