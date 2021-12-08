@@ -16,6 +16,7 @@ yarn dev
 ```sh
 # generate static project to docs/ directory
 PREFIX=/nuxt2-static yarn generate
+
 # serve the docs/ directory
 yarn start --spa --target static
 ```
