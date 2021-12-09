@@ -25,12 +25,12 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install dependencies
-      run: yarn install
-    - name: Build
-      run: GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
+    # - name: Install dependencies
+    #   run: yarn install
+    # - name: Build
+    #   run: GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
     - name: Set env
-      run: MESSAGE=OK!
+      run: export MESSAGE=OK!
     - name: Echo env
       run: |
         echo "MESSAGE: $MESSAGE"
