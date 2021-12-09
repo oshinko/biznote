@@ -14,6 +14,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      GENERATE_DIR: ./docs
+      PREFIX: /nuxt2-static
+      BUILD_BRANCH: build-${{ github.sha }}
+
     strategy:
       matrix:
         node-version: [16.x]
@@ -29,18 +34,15 @@ jobs:
     #   run: yarn install
     # - name: Build
     #   run: GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
-    - name: Set env
-      run: export MESSAGE=OK!
-    - name: Echo env
-      run: |
-        echo "MESSAGE: $MESSAGE"
+
     - name: t0
-      run: |
-        echo "ref: $ref"
-        echo "sha: $sha"
+      run: echo $ctx
       env:
-        ref: ${{github.ref}}
-        sha: ${{github.sha}}
+        ctx: ${{ toJson(github) }}
+
+    - name: t2
+      run: node -e "console.log(process.env.GENERATE_DIR)"
+
     # - name: Setup Git profile
     #   run: |
     #     git config user.email osnk@renjaku.jp
@@ -52,7 +54,7 @@ jobs:
     #     git push origin main
     # - name: Switch to build branch
     #   run: |
-    #     build=build-`git rev-parse --short HEAD`
+    #     build=build-${{ github.sha }}
     #     git branch $build main
     #     git checkout $build
     # - name: Push docs to origin/pages
