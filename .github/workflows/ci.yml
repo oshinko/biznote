@@ -32,31 +32,25 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    # - name: Install dependencies
-    #   run: yarn install
-    # - name: Build
-    #   run: GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
+    - name: Install dependencies
+      run: yarn install
+    - name: Build
+      run: GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
     - name: Setup Git profile
       run: |
         git config user.email $AUTO_COMMITTER_EMAIL
         git config user.name $AUTO_COMMITTER_NAME
-        git config -l | grep user.
-
-    - name: t1
+    - name: Push pages to origin/main
       run: |
-        git config -l | grep user.
-
-    # - name: Push pages to origin/main
-    #   run: |
-    #     git add ./pages
-    #     git commit -m "Update pages"
-    #     git push origin main
-    # - name: Switch to build branch
-    #   run: |
-    #     git branch $BUILD_BRANCH main
-    #     git checkout $BUILD_BRANCH
-    # - name: Push docs to origin/pages
-    #   run: |
-    #     git add ./docs
-    #     git commit -m "Update docs"
-    #     git push origin $BUILD_BRANCH:pages -f
+        git add ./pages
+        git commit -m "Update pages"
+        git push origin main
+    - name: Switch to build branch
+      run: |
+        git branch $BUILD_BRANCH main
+        git checkout $BUILD_BRANCH
+    - name: Push docs to origin/pages
+      run: |
+        git add ./docs
+        git commit -m "Update docs"
+        git push origin $BUILD_BRANCH:pages -f
