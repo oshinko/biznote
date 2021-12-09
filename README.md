@@ -2,7 +2,7 @@
 
 ## ページを追加または修正する手順
 
-- [issues/new](Issue を作成する)
+- [Issue を作成する](issues/new)
 
 
 ### 自分で行う場合
