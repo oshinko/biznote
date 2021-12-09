@@ -32,7 +32,8 @@ jobs:
     - name: Set env
       run: MESSAGE=OK!
     - name: Echo env
-      run: echo $MESSAGE
+      run: |
+        echo "MESSAGE: $MESSAGE"
     # - name: Setup Git profile
     #   run: |
     #     git config user.email osnk@renjaku.jp
