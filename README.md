@@ -12,9 +12,11 @@
 - マージ後、ビルドして git-push し [GitHub Pages](https://oshinko.github.com/nuxt2-static) の更新を確認する
 
 
-## Build Setup
+## 開発
 
-```bash
+### 開発サーバーを起動する
+
+```sh
 # install dependencies
 yarn install
 
@@ -23,7 +25,7 @@ yarn dev
 ```
 
 
-## Deploy to GitHub Pages
+### GitHub Pages にデプロイする
 
 ```sh
 # generate static project to docs/ directory
