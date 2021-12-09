@@ -25,6 +25,30 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: |
-        yarn install
-        GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
+    - name: Install dependencies
+      run: yarn install
+    - name: Build
+      run: GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
+    - name: Set env
+      run: MESSAGE=OK!
+    - name: Echo env
+      run: echo $MESSAGE
+    # - name: Setup Git profile
+    #   run: |
+    #     git config user.email osnk@renjaku.jp
+    #     git config user.name Oshinko
+    # - name: Push pages to origin/main
+    #   run: |
+    #     git add ./pages
+    #     git commit -m "Update pages"
+    #     git push origin main
+    # - name: Switch to build branch
+    #   run: |
+    #     build=build-`git rev-parse --short HEAD`
+    #     git branch $build main
+    #     git checkout $build
+    # - name: Push docs to origin/pages
+    #   run: |
+    #     git add ./docs
+    #     git commit -m "Update docs"
+    #     git push origin $build:pages -f
