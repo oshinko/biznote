@@ -34,6 +34,13 @@ jobs:
     - name: Echo env
       run: |
         echo "MESSAGE: $MESSAGE"
+    - name: t0
+      run: |
+        echo "ref: $ref"
+        echo "sha: $sha"
+      env:
+        ref: ${{github.ref}}
+        sha: ${{github.sha}}
     # - name: Setup Git profile
     #   run: |
     #     git config user.email osnk@renjaku.jp
