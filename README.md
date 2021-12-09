@@ -35,7 +35,7 @@ git checkout main
 GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
 
 # serve the docs/ directory
-GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn start --spa --target static
+GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn start --spa
 
 # push main branch
 git add ./pages

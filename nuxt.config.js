@@ -47,5 +47,7 @@ export default {
 
   router: {
     base: process.env.PREFIX
-  }
+  },
+
+  target: 'static'
 }
