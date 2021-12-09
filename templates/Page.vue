@@ -1,5 +1,11 @@
 <template>
-  <div>/* content */</div>
+  <div>
+    <Header />
+
+    <main>
+      /* content */
+    </main>
+  </div>
 </template>
 
 <script>

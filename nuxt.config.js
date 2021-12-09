@@ -19,6 +19,8 @@ export default {
     }
   },
 
+  components: true,
+
   generate: {
     dir: 'docs'
   },

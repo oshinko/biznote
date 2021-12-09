@@ -1,5 +1,9 @@
 <template>
-  <div><h1 id="page4">page4</h1>
+  <div>
+    <Header />
+
+    <main>
+      <h1 id="page4">page4</h1>
 <p>router-link testing.</p>
 <ul>
 <li><NuxtLink to="/">../</NuxtLink></li>
@@ -7,7 +11,9 @@
 <li><NuxtLink to="/page4">/page4</NuxtLink></li>
 <li><NuxtLink to="/page4">../page4</NuxtLink></li>
 </ul>
-</div>
+
+    </main>
+  </div>
 </template>
 
 <script>

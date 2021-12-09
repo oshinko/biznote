@@ -1,5 +1,9 @@
 <template>
-  <div><h1 id="消費税の軽減税率制度">消費税の軽減税率制度</h1>
+  <div>
+    <Header />
+
+    <main>
+      <h1 id="消費税の軽減税率制度">消費税の軽減税率制度</h1>
 <p>2019/10/01 (令和 1 年) より始まった、対象商品を購入する際の消費税の税率が、標準の 10% ではなく 8% に軽減される制度のこと。</p>
 <h2 id="インボイス制度"><a href="https://www.nta.go.jp/taxes/shiraberu/zeimokubetsu/shohi/keigenzeiritsu/">インボイス制度</a></h2>
 <ul>
@@ -47,7 +51,9 @@
 <p>適格請求書発行者申請は今してもいいが、簡易課税制度選択届出と提出先が違うため、インボイス制度開始期の基準期間となる今年分の確定申告後がベストタイミング。これは、基準期間売上高が一千万円以下であることを確定させた後の方が、事務処理がスムーズにいく可能性が高いため (国税局に相談済)。</p>
 <h3 id="課税事業者の取引シミュレーション">課税事業者の取引シミュレーション</h3>
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRCLruAZMNo7U-5DijU1kRQFlSVq5QKOZ2tzhovAeSOgYfilYNy_j96NxW5KCDaBFTLwZBA_2gK4dO1/pubhtml?gid=74925062&amp;single=true&amp;widget=true&amp;headers=false" style="width: 100%; height: 640px"></iframe>
-</div>
+
+    </main>
+  </div>
 </template>
 
 <script>
