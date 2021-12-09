@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "nuxt",
-    "start": "nuxt start",
+    "dev": "node generate-pages.mjs && nuxt",
+    "start": "node generate-pages.mjs && nuxt start",
     "generate": "node generate-pages.mjs && nuxt generate"
   },
   "devDependencies": {

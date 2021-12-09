@@ -4,5 +4,5 @@ router-link testing.
 
 - [../](../)
 - [/](/)
-- [/page1](/page1)
-- [../page1](../page1)
+- [/page4](/page4)
+- [../page4](../page4)

@@ -4,8 +4,8 @@
 <ul>
 <li><NuxtLink to="/">../</NuxtLink></li>
 <li><NuxtLink to="/">/</NuxtLink></li>
-<li><NuxtLink to="/page1">/page1</NuxtLink></li>
-<li><NuxtLink to="/page1">../page1</NuxtLink></li>
+<li><NuxtLink to="/page4">/page4</NuxtLink></li>
+<li><NuxtLink to="/page4">../page4</NuxtLink></li>
 </ul>
 </div>
 </template>
@@ -17,7 +17,7 @@ import meta from '@/assets/pages/meta.yml'
 export default {
   async asyncData({ $config, route }) {
     return {
-      title: meta.title,
+      title: meta.title ?? 'page4' ?? $config.title,
       og: {
         url: `${$config.baseURL}${route.path}`,
         image: `${$config.baseURL}${image1200x630}`
@@ -29,8 +29,6 @@ export default {
     return {
       title: this.title,
       meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           hid: 'description',
           name: 'description',

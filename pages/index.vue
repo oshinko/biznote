@@ -1,12 +1,9 @@
 <template>
   <div><h1 id="welcome">Welcome!</h1>
-<p>Hello!</p>
+<p>個人事業主のためのナレッジベースです。</p>
 <ul>
-<li><NuxtLink to="/page1">/page1</NuxtLink></li>
-<li><NuxtLink to="/page2">/page2</NuxtLink></li>
-<li><NuxtLink to="/page2/page3">/page3</NuxtLink></li>
-<li><NuxtLink to="/page4">/page4</NuxtLink></li>
-<li><NuxtLink to="/%E6%97%A5%E6%9C%AC%E8%AA%9E">/日本語</NuxtLink></li>
+<li><NuxtLink to="/taxes/%E6%B6%88%E8%B2%BB%E7%A8%8E/%E8%BB%BD%E6%B8%9B%E7%A8%8E%E7%8E%87">軽減税率</NuxtLink><!-- - [課税事業者](taxes/消費税/課税事業者) -->
+<!-- - [給与所得](taxes/所得税/給与所得) --></li>
 </ul>
 </div>
 </template>
@@ -18,7 +15,7 @@ import meta from '@/assets/pages/meta.yml'
 export default {
   async asyncData({ $config, route }) {
     return {
-      title: meta.title,
+      title: meta.title ?? 'Welcome!' ?? $config.title,
       og: {
         url: `${$config.baseURL}${route.path}`,
         image: `${$config.baseURL}${image1200x630}`
@@ -30,8 +27,6 @@ export default {
     return {
       title: this.title,
       meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           hid: 'description',
           name: 'description',

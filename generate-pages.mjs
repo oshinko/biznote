@@ -41,6 +41,10 @@ const tmplPlaceholders = {
   meta: {
     pattern: /\/\*+ +meta +\*+\//,
     default: '@/assets/pages/meta.yml'
+  },
+  title: {
+    pattern: /\/\*+ +title +\*+\//,
+    default: '@/assets/pages/meta.yml'
   }
 }
 const relAnchor = /<a +.*href="([^"]*)"[^>]*>([^<]+)<\/a>/g
@@ -64,7 +68,7 @@ async function getPageBundles() {
   return results
 }
 
-fs.promises.rm(pagesDir, { recursive: true, force: true })
+await fs.promises.rm(pagesDir, { recursive: true, force: true })
 
 for (const [bundleDir, files] of Object.entries(await getPageBundles())) {
   const pageDir = path.join(pagesDir, bundleDir)
@@ -99,6 +103,11 @@ for (const [bundleDir, files] of Object.entries(await getPageBundles())) {
       }
 
       page = page.replace(tmplPlaceholders.content.pattern, html)
+
+      const h1 = (html.match(/<h1[^>]+>([^<]+)<\/h1>/) ?? [])[1]
+
+      if (h1)
+        page = page.replace(tmplPlaceholders.title.pattern, h1)
     }
 
     else if (stem === '1200x630' && ext.match(/\.pi?ng/))

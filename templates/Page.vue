@@ -9,7 +9,7 @@ import meta from '/* meta */'
 export default {
   async asyncData({ $config, route }) {
     return {
-      title: meta.title,
+      title: meta.title ?? '/* title */' ?? $config.title,
       og: {
         url: `${$config.baseURL}${route.path}`,
         image: `${$config.baseURL}${image1200x630}`
@@ -21,8 +21,6 @@ export default {
     return {
       title: this.title,
       meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           hid: 'description',
           name: 'description',
