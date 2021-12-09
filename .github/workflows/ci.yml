@@ -16,7 +16,7 @@ jobs:
 
     env:
       GENERATE_DIR: ./docs
-      PREFIX: /nuxt2-static
+      PREFIX: /${{ github.event.repository.name }}
       BUILD_BRANCH: build-${{ github.sha }}
 
     strategy:
@@ -42,6 +42,12 @@ jobs:
 
     - name: t2
       run: node -e "console.log(process.env.GENERATE_DIR)"
+
+    - name: t3
+      run: |
+        echo "GENERATE_DIR: $GENERATE_DIR"
+        echo "PREFIX: $PREFIX"
+        echo "BUILD_BRANCH: $BUILD_BRANCH"
 
     # - name: Setup Git profile
     #   run: |
