@@ -15,9 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      AUTO_COMMITTER_EMAIL: ${{ github.event.repository.owner.email }}
+      AUTO_COMMITTER_NAME: CI Service
+      BUILD_BRANCH: build-${{ github.sha }}
       GENERATE_DIR: ./docs
       PREFIX: /${{ github.event.repository.name }}
-      BUILD_BRANCH: build-${{ github.sha }}
 
     strategy:
       matrix:
@@ -34,25 +36,16 @@ jobs:
     #   run: yarn install
     # - name: Build
     #   run: GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
-
-    - name: t0
-      run: echo $ctx
-      env:
-        ctx: ${{ toJson(github) }}
-
-    - name: t2
-      run: node -e "console.log(process.env.GENERATE_DIR)"
-
-    - name: t3
+    - name: Setup Git profile
       run: |
-        echo "GENERATE_DIR: $GENERATE_DIR"
-        echo "PREFIX: $PREFIX"
-        echo "BUILD_BRANCH: $BUILD_BRANCH"
+        git config user.email $AUTO_COMMITTER_EMAIL
+        git config user.name $AUTO_COMMITTER_NAME
+        git config -l | grep user.
 
-    # - name: Setup Git profile
-    #   run: |
-    #     git config user.email osnk@renjaku.jp
-    #     git config user.name Oshinko
+    - name: t1
+      run: |
+        git config -l | grep user.
+
     # - name: Push pages to origin/main
     #   run: |
     #     git add ./pages
@@ -60,11 +53,10 @@ jobs:
     #     git push origin main
     # - name: Switch to build branch
     #   run: |
-    #     build=build-${{ github.sha }}
-    #     git branch $build main
-    #     git checkout $build
+    #     git branch $BUILD_BRANCH main
+    #     git checkout $BUILD_BRANCH
     # - name: Push docs to origin/pages
     #   run: |
     #     git add ./docs
     #     git commit -m "Update docs"
-    #     git push origin $build:pages -f
+    #     git push origin $BUILD_BRANCH:pages -f
