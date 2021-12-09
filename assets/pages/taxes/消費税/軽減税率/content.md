@@ -10,6 +10,14 @@
 - 軽減税率制度の導入に伴い 2023/10/01 (令和 5 年) から始まる
 
 
+### 従来の請求書との比較
+
+<div class="d-flex align-items-start">
+  <img src="invalid.png">
+  <img src="valid.png">
+</div>
+
+
 ### 要点
 
 - [令和５年10月１日から適格請求書発行事業者の登録を受けるためには、原則として令和３年10月１日から令和５年３月3１日までに提出する必要がある](https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/hojin/annai/invoice_01.htm)

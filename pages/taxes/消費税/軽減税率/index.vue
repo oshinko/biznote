@@ -11,6 +11,13 @@
 <li>正式名称を「適格請求書等保存方式」という</li>
 <li>軽減税率制度の導入に伴い 2023/10/01 (令和 5 年) から始まる</li>
 </ul>
+<h3 id="従来の請求書との比較">従来の請求書との比較</h3>
+<div class="d-flex align-items-start">
+  <img src="@/assets/pages/taxes/消費税/軽減税率/invalid.png">
+  <img src="@/assets/pages/taxes/消費税/軽減税率/valid.png">
+</div>
+
+
 <h3 id="要点">要点</h3>
 <ul>
 <li><a href="https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/hojin/annai/invoice_01.htm">令和５年10月１日から適格請求書発行事業者の登録を受けるためには、原則として令和３年10月１日から令和５年３月3１日までに提出する必要がある</a></li>

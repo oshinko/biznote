@@ -47,7 +47,9 @@ const tmplPlaceholders = {
     default: '@/assets/pages/meta.yml'
   }
 }
-const relAnchor = /<a +.*href="([^"]*)"[^>]*>([^<]+)<\/a>/g
+const absHrefAnchorTag = /<a +href="(\/[^"]*)"[^>]*>([^<]+)<\/a>/g
+const allHrefAnchorTag = /<a +href="([^"]*)"[^>]*>([^<]+)<\/a>/g
+const imageTag = /<img +src="([^"]*)"[^>]*>/g
 
 async function getPageBundles() {
   const results = {}
@@ -87,12 +89,9 @@ for (const [bundleDir, files] of Object.entries(await getPageBundles())) {
       const markdown =
         await fs.promises.readFile(pageAssetFile, { encoding: 'utf8' })
       let html = marked.parse(markdown)
-        .replace(
-          /<a +.*href="(\/[^"]*)"[^>]*>([^<]+)<\/a>/g,
-          '<NuxtLink to="$1">$2</NuxtLink>'
-        )
+        .replace(absHrefAnchorTag, '<NuxtLink to="$1">$2</NuxtLink>')
 
-      for (const [matched, href, text] of html.matchAll(relAnchor)) {
+      for (const [matched, href, text] of html.matchAll(allHrefAnchorTag)) {
         if (href.match(/[^:]+:/))
           continue
         if (path.isAbsolute(href))
@@ -100,6 +99,17 @@ for (const [bundleDir, files] of Object.entries(await getPageBundles())) {
         const to = '/' + path.relative(pagesDir, path.join(pageDir, href))
           .split(path.sep).join('/')
         html = html.replace(matched, `<NuxtLink to="${to}">${text}</NuxtLink>`)
+      }
+
+      for (const [matched, src] of html.matchAll(imageTag)) {
+        if (src.match(/[^:]+:/))
+          continue
+        const assetSrc = '@' + path.join('/assets/pages', bundleDir, src)
+          .split(path.sep).join('/')
+        html = html.replace(
+          matched,
+          matched.replace(/src="[^"]*"/, `src="${assetSrc}"`)
+        )
       }
 
       page = page.replace(tmplPlaceholders.content.pattern, html)

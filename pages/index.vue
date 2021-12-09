@@ -4,7 +4,7 @@
 
     <main>
       <h1 id="welcome">Welcome!</h1>
-<p>個人事業主のためのナレッジベースです。</p>
+<p>事業者のナレッジベースです。</p>
 <ul>
 <li><NuxtLink to="/taxes/%E6%B6%88%E8%B2%BB%E7%A8%8E/%E8%BB%BD%E6%B8%9B%E7%A8%8E%E7%8E%87">軽減税率</NuxtLink><!-- - [課税事業者](taxes/消費税/課税事業者) -->
 <!-- - [給与所得](taxes/所得税/給与所得) --></li>
