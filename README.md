@@ -38,7 +38,8 @@ GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
 GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn start --spa --target static
 
 # push main branch
-git add ./pages && git commit -m "Update pages"
+git add ./pages
+git commit -m "Update pages"
 git push origin main
 
 # switch to build branch
@@ -47,6 +48,7 @@ git branch $build main
 git checkout $build
 
 # push build branch to origin/pages
-git add ./docs && git commit -m "Update docs"
+git add ./docs
+git commit -m "Update docs"
 git push origin $build:pages -f
 ```
