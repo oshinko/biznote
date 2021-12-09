@@ -26,7 +26,7 @@ export default {
   ],
 
   generate: {
-    dir: 'docs'
+    dir: process.env.GENERATE_DIR
   },
 
   head: {

@@ -28,12 +28,25 @@ yarn dev
 ### GitHub Pages にデプロイする
 
 ```sh
+# switch to main branch
+git checkout main
+
 # generate static project to docs/ directory
-PREFIX=/nuxt2-static yarn generate
+GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
 
 # serve the docs/ directory
-yarn start --spa --target static
+GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn start --spa --target static
 
-# push to repository
-git add . && git commit -m "Update dist resources" && git push
+# push main branch
+git add ./pages && git commit -m "Update pages"
+git push origin main
+
+# switch to build branch
+build=build-`git rev-parse --short HEAD`
+git branch $build main
+git checkout $build
+
+# push build branch to origin/pages
+git add ./docs && git commit -m "Update docs"
+git push origin $build:pages -f
 ```
