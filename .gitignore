@@ -1,5 +1,5 @@
 # Project specific
-pages/
+/pages/
 
 # Dependency directories
 node_modules/
