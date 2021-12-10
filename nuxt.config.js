@@ -3,9 +3,13 @@ const baseURL = process.env.BASE_URL ?
   {}
 
 const scripts = []
+const google = { analytics: {} }
 
-if (process.env.GOOGLE_ANALYTICS)
+if (process.env.GOOGLE_ANALYTICS) {
   scripts.push({ src: process.env.GOOGLE_ANALYTICS, async: true })
+  google.analytics.target =
+    new URL(process.env.GOOGLE_ANALYTICS).searchParams.id
+}
 
 export default {
   build: {
@@ -41,8 +45,13 @@ export default {
     script: scripts
   },
 
+  plugins: [
+    '~/plugins/ga.client'
+  ],
+
   publicRuntimeConfig: {
     baseURL,
+    google,
     title: process.env.TITLE
   },
 
