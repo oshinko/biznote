@@ -17,7 +17,7 @@ jobs:
       BASE_URL: https://oshinko.github.io/${{ github.event.repository.name }}
       BUILD_BRANCH: build-${{ github.sha }}
       GENERATE_DIR: ./docs
-      TITLE: nuxt2-static
+      TITLE: Biznote
 
     strategy:
       matrix:

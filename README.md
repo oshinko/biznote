@@ -1,4 +1,4 @@
-# nuxt2-static
+# Biznote
 
 ## ページを追加または修正する手順
 
@@ -9,7 +9,7 @@
 
 - [./assets/pages](./assets/pages) より、ページを追加・修正する
 - [Pull Request](../../pulls) を作成する
-- マージ後 [GitHub Pages](https://oshinko.github.io/nuxt2-static) の更新を確認する
+- マージ後 [GitHub Pages](https://oshinko.github.io/biznote) の更新を確認する
 
 
 ## 開発
@@ -18,7 +18,7 @@
 
 ```sh
 cat << EOF > .env
-BASE_URL=http://localhost:3000/nuxt2-static
+BASE_URL=http://localhost:3000/biznote
 EOF
 ```
 

@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <Header />
+  <div class="d-flex flex-direction-column">
+    <header>
+      <Header />
+    </header>
 
     <main>
       /* content */
