@@ -18,6 +18,7 @@ jobs:
       BUILD_BRANCH: build-${{ github.sha }}
       GENERATE_DIR: ./docs
       GOOGLE_ANALYTICS: https://www.googletagmanager.com/gtag/js?id=G-VTZJCWD9HR
+      GOOGLE_SITE_VERIFICATION: W3oAOVBeWqkpnz2vHuvtSuNVTmIpfxyCdpey935fCE4
       TITLE: Biznote
 
     strategy:

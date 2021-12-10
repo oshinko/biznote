@@ -2,11 +2,22 @@ const baseURL = process.env.BASE_URL ?
   new URL(process.env.BASE_URL) :
   {}
 
-const scripts = []
+const meta = [
+  { charset: 'utf-8' },
+  { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+]
+
+if (process.env.GOOGLE_SITE_VERIFICATION)
+  meta.push({
+    name: 'google-site-verification',
+    content: process.env.GOOGLE_SITE_VERIFICATION
+  })
+
+const script = []
 const google = { analytics: {} }
 
 if (process.env.GOOGLE_ANALYTICS) {
-  scripts.push({ src: process.env.GOOGLE_ANALYTICS, async: true })
+  script.push({ src: process.env.GOOGLE_ANALYTICS, async: true })
   google.analytics.target =
     new URL(process.env.GOOGLE_ANALYTICS).searchParams.id
 }
@@ -38,12 +49,8 @@ export default {
     htmlAttrs: {
       lang: 'ja'
     },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'google-site-verification', content: 'W3oAOVBeWqkpnz2vHuvtSuNVTmIpfxyCdpey935fCE4' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-    ],
-    script: scripts
+    meta,
+    script
   },
 
   plugins: [
