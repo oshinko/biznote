@@ -42,10 +42,6 @@ const tmplPlaceholders = {
     pattern: /\/\*+ +image1200x630 +\*+\//,
     default: '@/assets/pages/1200x630.png'
   },
-  meta: {
-    pattern: /\/\*+ +meta +\*+\//,
-    default: '@/assets/pages/meta.yml'
-  },
   title: {
     pattern: /\/\*+ +title +\*+\//,
     default: ''
@@ -132,9 +128,6 @@ for (const [bundleDir, files] of Object.entries(await getPageBundles())) {
     else if (stem === '1200x630' && ext.match(/\.pi?ng/))
       page =
         page.replace(tmplPlaceholders.image1200x630.pattern, importablePath)
-
-    else if (stem === 'meta' && ext.match(/\.ya?ml/))
-      page = page.replace(tmplPlaceholders.meta.pattern, importablePath)
   }
 
   const pageFilled = Object.entries(tmplPlaceholders).reduce(

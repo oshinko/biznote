@@ -12,12 +12,11 @@
 
 <script>
 import image1200x630 from '/* image1200x630 */'
-import meta from '/* meta */'
 
 export default {
   async asyncData({ $config, route }) {
     return {
-      title: meta.title || '/* title */' || $config.title,
+      title: '/* title */' || $config.title,
       og: {
         url: `${$config.baseURL.href}${route.path}`,
         image: `${$config.baseURL.origin}${image1200x630}`
@@ -32,8 +31,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: meta.description || '/* description */' ||
-            $config.description
+          content: '/* description */' || $config.description
         },
         {
           hid: 'twitter:card',
@@ -43,7 +41,7 @@ export default {
         {
           hid: 'og:description',
           property: 'og:description',
-          content: meta.description
+          content: '/* description */' || $config.description
         },
         { hid: 'og:image', property: 'og:image', content: this.og.image },
         { hid: 'og:image:alt', property: 'og:image:alt', content: this.title },

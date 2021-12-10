@@ -23,18 +23,6 @@ if (process.env.GOOGLE_ANALYTICS) {
 }
 
 export default {
-  build: {
-    extend(config) {
-      config.module.rules.push({
-        enforce: 'pre',
-        test: /\.ya?ml$/,
-        type: 'json',
-        loader: 'yaml-loader',
-        exclude: /(node_modules)/
-      })
-    }
-  },
-
   components: true,
 
   css: [
