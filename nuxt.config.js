@@ -40,6 +40,7 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
+      { name: 'google-site-verification', content: 'W3oAOVBeWqkpnz2vHuvtSuNVTmIpfxyCdpey935fCE4' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ],
     script: scripts
