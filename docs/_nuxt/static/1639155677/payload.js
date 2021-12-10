@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/", {data:[{title:"Welcome!",url:"https:\u002F\u002Foshinko.github.io\u002Fbiznote\u002F",ogImage:"https:\u002F\u002Foshinko.github.io\u002Fbiznote\u002F_nuxt\u002Fimg\u002F1200x630.f11af9d.png"}],fetch:{},mutations:void 0});
