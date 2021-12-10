@@ -18,6 +18,8 @@
 
 ```sh
 cat << EOF > .env
+TITLE=Biznote (local)
+DESCRIPTION=Biznote は、事業者向けのナレッジベースです。
 BASE_URL=http://localhost:3000/biznote
 EOF
 ```

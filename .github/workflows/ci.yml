@@ -16,6 +16,7 @@ jobs:
       AUTO_COMMITTER_NAME: CI Service
       BASE_URL: https://oshinko.github.io/${{ github.event.repository.name }}
       BUILD_BRANCH: build-${{ github.sha }}
+      DESCRIPTION: Biznote は、事業者向けのナレッジベースです。
       GENERATE_DIR: ./docs
       GOOGLE_ANALYTICS: https://www.googletagmanager.com/gtag/js?id=G-VTZJCWD9HR
       GOOGLE_SITE_VERIFICATION: W3oAOVBeWqkpnz2vHuvtSuNVTmIpfxyCdpey935fCE4

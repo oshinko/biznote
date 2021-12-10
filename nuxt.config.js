@@ -59,6 +59,7 @@ export default {
 
   publicRuntimeConfig: {
     baseURL,
+    description: process.env.DESCRIPTION,
     google,
     title: process.env.TITLE
   },

@@ -17,7 +17,7 @@ import meta from '/* meta */'
 export default {
   async asyncData({ $config, route }) {
     return {
-      title: meta.title ?? '/* title */' ?? $config.title,
+      title: meta.title || '/* title */' || $config.title,
       og: {
         url: `${$config.baseURL.href}${route.path}`,
         image: `${$config.baseURL.origin}${image1200x630}`
@@ -32,7 +32,8 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: meta.description
+          content: meta.description || '/* description */' ||
+            $config.description
         },
         {
           hid: 'twitter:card',

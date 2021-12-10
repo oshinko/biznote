@@ -34,6 +34,10 @@ const tmplPlaceholders = {
   content: {
     pattern: /\/\*+ +content +\*+\//
   },
+  description: {
+    pattern: /\/\*+ +description +\*+\//,
+    default: ''
+  },
   image1200x630: {
     pattern: /\/\*+ +image1200x630 +\*+\//,
     default: '@/assets/pages/1200x630.png'
@@ -44,7 +48,7 @@ const tmplPlaceholders = {
   },
   title: {
     pattern: /\/\*+ +title +\*+\//,
-    default: '@/assets/pages/meta.yml'
+    default: ''
   }
 }
 const absHrefAnchorTag = /<a +href="(\/[^"]*)"[^>]*>([^<]+)<\/a>/g
@@ -114,10 +118,15 @@ for (const [bundleDir, files] of Object.entries(await getPageBundles())) {
 
       page = page.replace(tmplPlaceholders.content.pattern, html)
 
-      const h1 = (html.match(/<h1[^>]+>([^<]+)<\/h1>/) ?? [])[1]
+      const h1 = (html.match(/<h1[^>]*>([^<]+)<\/h1>/) ?? [])[1]
 
       if (h1)
         page = page.replace(tmplPlaceholders.title.pattern, h1)
+
+      const p = (html.match(/<p[^>]*>([^<]+)<\/p>/) ?? [])[1]
+
+      if (p)
+        page = page.replace(tmplPlaceholders.description.pattern, p)
     }
 
     else if (stem === '1200x630' && ext.match(/\.pi?ng/))
