@@ -1,10 +1,11 @@
-const TITLE = 'nuxt2-static'
-const GOOGLE_ANALYTICS = undefined
+const baseURL = process.env.BASE_URL ?
+  new URL(process.env.BASE_URL) :
+  {}
 
 const scripts = []
 
-if (GOOGLE_ANALYTICS)
-  scripts.push({ src: GOOGLE_ANALYTICS, async: true })
+if (process.env.GOOGLE_ANALYTICS)
+  scripts.push({ src: process.env.GOOGLE_ANALYTICS, async: true })
 
 export default {
   build: {
@@ -41,12 +42,12 @@ export default {
   },
 
   publicRuntimeConfig: {
-    baseURL: 'http://localhost:3000',
-    title: TITLE
+    baseURL,
+    title: process.env.TITLE
   },
 
   router: {
-    base: process.env.PREFIX
+    base: baseURL.pathname
   },
 
   target: 'static'

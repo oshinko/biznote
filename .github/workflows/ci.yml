@@ -14,9 +14,10 @@ jobs:
     env:
       AUTO_COMMITTER_EMAIL: ${{ github.event.repository.owner.email }}
       AUTO_COMMITTER_NAME: CI Service
+      BASE_URL: https://oshinko.github.io/${{ github.event.repository.name }}
       BUILD_BRANCH: build-${{ github.sha }}
       GENERATE_DIR: ./docs
-      PREFIX: /${{ github.event.repository.name }}
+      TITLE: nuxt2-static
 
     strategy:
       matrix:
@@ -34,18 +35,12 @@ jobs:
         run: yarn install
 
       - name: Build
-        run: GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
+        run: yarn generate
 
       - name: Setup Git profile
         run: |
           git config user.email $AUTO_COMMITTER_EMAIL
           git config user.name $AUTO_COMMITTER_NAME
-
-      - name: Push pages to origin/main
-        run: |
-          git add ./pages
-          git commit -m "Update pages" || echo "No changes added to commit"
-          git push origin main
 
       - name: Switch to build branch
         run: |

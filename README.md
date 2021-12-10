@@ -14,6 +14,16 @@
 
 ## 開発
 
+### 環境変数ファイルを作成する
+
+```sh
+cat << EOF > .env
+GENERATE_DIR=./docs
+BASE_URL=http://localhost:3000/nuxt2-static
+EOF
+```
+
+
 ### 開発サーバーを起動する
 
 ```sh
@@ -25,30 +35,11 @@ yarn dev
 ```
 
 
-### GitHub Pages にデプロイする
+### 静的ホスティングを試す
 
 ```sh
-# switch to main branch
-git checkout main
-
 # generate static project to docs/ directory
 GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
 
 # serve the docs/ directory
 GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn start --spa
-
-# push main branch
-git add ./pages
-git commit -m "Update pages"
-git push origin main
-
-# switch to build branch
-build=build-`git rev-parse --short HEAD`
-git branch $build main
-git checkout $build
-
-# push build branch to origin/pages
-git add ./docs
-git commit -m "Update docs"
-git push origin $build:pages -f
-```

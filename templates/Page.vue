@@ -17,8 +17,8 @@ export default {
     return {
       title: meta.title ?? '/* title */' ?? $config.title,
       og: {
-        url: `${$config.baseURL}${route.path}`,
-        image: `${$config.baseURL}${image1200x630}`
+        url: `${$config.baseURL.href}${route.path}`,
+        image: `${$config.baseURL.origin}${image1200x630}`
       }
     }
   },
