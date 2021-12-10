@@ -9,7 +9,7 @@
 
 - [./assets/pages](./assets/pages) より、ページを追加・修正する
 - [Pull Request](../../pulls) を作成する
-- マージ後 [GitHub Pages](https://oshinko.github.com/nuxt2-static) の更新を確認する
+- マージ後 [GitHub Pages](https://oshinko.github.io/nuxt2-static) の更新を確認する
 
 
 ## 開発
