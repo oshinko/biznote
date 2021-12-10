@@ -31,7 +31,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: '/* description */' || $config.description
+          content: '/* description */' || this.$config.description
         },
         {
           hid: 'twitter:card',
@@ -41,7 +41,7 @@ export default {
         {
           hid: 'og:description',
           property: 'og:description',
-          content: '/* description */' || $config.description
+          content: '/* description */' || this.$config.description
         },
         { hid: 'og:image', property: 'og:image', content: this.og.image },
         { hid: 'og:image:alt', property: 'og:image:alt', content: this.title },
