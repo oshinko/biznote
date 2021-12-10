@@ -32,18 +32,18 @@ const tmplPageFileContent =
   await fs.promises.readFile(tmplPageFile, { encoding: 'utf8' })
 const tmplPlaceholders = {
   content: {
-    pattern: /\/\*+ +content +\*+\//
+    pattern: /\/\*+ +content +\*+\//g
   },
   description: {
-    pattern: /\/\*+ +description +\*+\//,
+    pattern: /\/\*+ +description +\*+\//g,
     default: ''
   },
   image1200x630: {
-    pattern: /\/\*+ +image1200x630 +\*+\//,
+    pattern: /\/\*+ +image1200x630 +\*+\//g,
     default: '@/assets/pages/1200x630.png'
   },
   title: {
-    pattern: /\/\*+ +title +\*+\//,
+    pattern: /\/\*+ +title +\*+\//g,
     default: ''
   }
 }
