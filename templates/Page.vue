@@ -17,10 +17,8 @@ export default {
   async asyncData({ $config, route }) {
     return {
       title: '/* title */' || $config.title,
-      og: {
-        url: `${$config.baseURL.href}${route.path}`,
-        image: `${$config.baseURL.origin}${image1200x630}`
-      }
+      url: $config.baseURL.href + route.path,
+      ogImage: $config.baseURL.origin + image1200x630
     }
   },
 
@@ -43,11 +41,11 @@ export default {
           property: 'og:description',
           content: '/* description */' || this.$config.description
         },
-        { hid: 'og:image', property: 'og:image', content: this.og.image },
+        { hid: 'og:image', property: 'og:image', content: this.ogImage },
         { hid: 'og:image:alt', property: 'og:image:alt', content: this.title },
         { hid: 'og:title', property: 'og:title', content: this.title },
         { hid: 'og:type', property: 'og:type', content: 'website' },
-        { hid: 'og:url', property: 'og:url', content: this.og.url }
+        { hid: 'og:url', property: 'og:url', content: this.url }
       ]
     }
   }
