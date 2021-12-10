@@ -18,7 +18,6 @@
 
 ```sh
 cat << EOF > .env
-GENERATE_DIR=./docs
 BASE_URL=http://localhost:3000/nuxt2-static
 EOF
 ```
@@ -38,8 +37,8 @@ yarn dev
 ### 静的ホスティングを試す
 
 ```sh
-# generate static project to docs/ directory
-GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn generate
+# generate static project to dist/ directory
+yarn generate
 
-# serve the docs/ directory
-GENERATE_DIR=./docs PREFIX=/nuxt2-static yarn start --spa
+# serve the dist/ directory
+yarn start --spa

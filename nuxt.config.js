@@ -47,7 +47,9 @@ export default {
   },
 
   router: {
-    base: baseURL.pathname
+    base: baseURL.pathname,
+    middleware: 'redirect-trailing-slash',
+    trailingSlash: true
   },
 
   target: 'static'
